@@ -1,0 +1,35 @@
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true
+server:
+  port: 8080
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spring-cloud-eureka-server:8761/eureka
+#      defaultZone:  http://localhost:8761/eureka
+    register-with-eureka: false
+  instance:
+    preferIpAddress: true
+
+app:
+  provider:
+    uri: http://resource-service-mock:8080/services/resourcemock/v1
+  receiver:
+    uri: http://song-service:8080/services/songs/v1
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
