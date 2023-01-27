@@ -11,6 +11,8 @@ ARG JAR_FILE=target/spring-cloud-gateway*.jar
 
 # cd /opt/app
 WORKDIR /opt/app
+#ENV JAVA_TOOL_OPTIONS -agentlib:jdwp=transport=dt_socket,address=0.0.0.0:3003,server=y,suspend=n
+
 
 COPY --from=build ${JAR_FILE} app.jar
 
